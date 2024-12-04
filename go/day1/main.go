@@ -36,6 +36,24 @@ func SumDistance(input string) (sum int) {
 	return sum
 }
 
+func SimilarityScore(input string) (score int) {
+	res := parseInput(input)
+
+	for _, a := range res[0] {
+		count := 0
+		for _, b := range res[1] {
+			if b == a {
+				count++
+			}
+		}
+
+		score += a * count
+	}
+
+	return score
+}
+
 func main() {
 	fmt.Println("Part 1:", SumDistance(input))
+	fmt.Println("Part 2:", SimilarityScore(input))
 }

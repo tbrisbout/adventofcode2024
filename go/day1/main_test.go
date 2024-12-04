@@ -16,7 +16,8 @@ var testInput = strings.TrimSpace(`
 `)
 
 func TestParseInput(t *testing.T) {
-	got := parseInput(testInput)
+	left, right := parseInput(testInput)
+	got := [2][]int{left, right}
 	want := [2][]int{{3, 4, 2, 1, 3, 3}, {4, 3, 5, 3, 9, 3}}
 
 	if !reflect.DeepEqual(got, want) {

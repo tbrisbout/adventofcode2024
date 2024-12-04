@@ -14,34 +14,34 @@ func toInt(s string) int {
 	return i
 }
 
-func parseInput(input string) (res [2][]int) {
+func parseInput(input string) (left, right []int) {
 	for _, s := range strings.Split(input, "\n") {
 		a, b, _ := strings.Cut(s, "   ")
-		res[0] = append(res[0], toInt(a))
-		res[1] = append(res[1], toInt(b))
+		left = append(left, toInt(a))
+		right = append(right, toInt(b))
 	}
-	return res
+	return left, right
 }
 
 func SumDistance(input string) (sum int) {
-	res := parseInput(input)
+	left, right := parseInput(input)
 
-	slices.Sort(res[0])
-	slices.Sort(res[1])
+	slices.Sort(left)
+	slices.Sort(right)
 
-	for i := range res[0] {
-		sum += int(math.Abs(float64(res[0][i] - res[1][i])))
+	for i := range left {
+		sum += int(math.Abs(float64(left[i] - right[i])))
 	}
 
 	return sum
 }
 
 func SimilarityScore(input string) (score int) {
-	res := parseInput(input)
+	left, right := parseInput(input)
 
-	for _, a := range res[0] {
+	for _, a := range left {
 		count := 0
-		for _, b := range res[1] {
+		for _, b := range right {
 			if b == a {
 				count++
 			}

@@ -18,7 +18,14 @@ export const sumDistance = (input: string): number => {
   return l.reduce((sum, a, i) => sum + Math.abs(a - r[i]), 0)
 }
 
+export const similarityScore = (input: string): number => {
+  const [left, right] = parseInput(input);
+
+  return left.reduce((score, a) => score + (a * right.filter(b => a === b).length), 0)
+}
+
 // Learn more at https://docs.deno.com/runtime/manual/examples/module_metadata#concepts
 if (import.meta.main) {
   console.log("Part 1:", sumDistance(input))
+  console.log("Part 2:", similarityScore(input))
 }

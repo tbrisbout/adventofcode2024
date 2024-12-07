@@ -1,5 +1,5 @@
 import { assertEquals } from "@std/assert";
-import { sumDistance } from "./main.ts";
+import { sumDistance, similarityScore } from "./main.ts";
 
 const testInput = `
 3   4
@@ -12,4 +12,8 @@ const testInput = `
 
 Deno.test(function testSumDistance() {
   assertEquals(sumDistance(testInput), 11);
+});
+
+Deno.test(function testSimilarityScore() {
+  assertEquals(similarityScore(testInput), 31);
 });
